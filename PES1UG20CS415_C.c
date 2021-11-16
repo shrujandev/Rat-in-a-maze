@@ -83,7 +83,7 @@ int main(){
 
 
 
-    findPath(ptr,endI,endJ);
+    findPath(ptr,endI,endJ,output);
 
     
     fclose(input);
@@ -165,7 +165,7 @@ void inputMatrix(Head *ptr,int c,int i, int j){
 }
 
 
-void findPath(Head *ptr,int endI,int endJ){
+void findPath(Head *ptr,int endI,int endJ , FILE *output){
             Stack *stack;
             stack = (Stack*)malloc(sizeof(Stack));
             stack->head = NULL;
@@ -199,6 +199,7 @@ void findPath(Head *ptr,int endI,int endJ){
             printf("\nThe result");
             while(p->next != NULL){
                 printf("\n%d %d",p->ele->i,p->ele->j);
+                fprintf(output,"\n%d %d",p->ele->i,p->ele->j);
                 p = p->next;
 
             }
