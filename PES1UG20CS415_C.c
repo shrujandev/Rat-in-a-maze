@@ -172,7 +172,7 @@ void findPath(Head *ptr,int endI,int endJ){
             Node *move;
             move = ptr->head;
             pushElement(stack,move);
-            while(move->i != endI && move->j != endJ){
+            while((move->i != endI && move->j != endJ) || (move->i == endI && move->j != endJ) || (move->i != endI && move->j == endJ) || !((move->i == endI && move->j == endJ))){
                 if(move->right->data == 0 ){
                     
                     move = move->right;
@@ -192,6 +192,7 @@ void findPath(Head *ptr,int endI,int endJ){
                     move = popElement(stack);
                 }
             }
+            pushElement(stack,move);
 
             StackEle *p;
             p = stack->head;
