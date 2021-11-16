@@ -56,28 +56,7 @@ int main(){
 
     for(int i = startI; i <= endI ;i++){
         for(int j =startJ ; j <= endJ ; j++ ){
-            Node *temp;
-            
-            if(ptr->head == NULL){
-                temp = (Node*)malloc(sizeof(Node));
-                
-                temp->data = b[a];
-                temp->right = NULL;
-                temp->down = NULL;
-                ptr->head = temp;
-
-
-            }
-            else{
-                temp = ptr->head;
-                while(temp->right != NULL){
-                    temp = temp->right;
-
-                }
-                temp->right = (Node*)malloc(sizeof(Node));
-                temp->right->data = b[a];
-                temp->right->right = NULL;
-                temp->down->down = NULL;
+            printf(" %d ",c[i][j]);
 
         }
         printf("\n");
