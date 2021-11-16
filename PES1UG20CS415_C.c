@@ -1,11 +1,25 @@
 #include<stdio.h>
 #include<stdlib.h>
+typedef struct node{
+    int i;
+    int j;
+    int data;
+    struct node *right;
+    struct node *down;
+
+}Node;
+
+typedef struct head{
+    Node *head;
+}Head;
 
 
 int main(){
     int a;
     int b[500];
     int c[100][100];
+    Head *ptr;
+    ptr->head==NULL;
     int startI,startJ,endI,endJ;
     FILE *input = fopen("input.txt","r");
     FILE *output = fopen("output.txt","w");
