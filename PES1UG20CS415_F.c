@@ -21,7 +21,6 @@ void inputMatrix(Head *ptr,int c,int i, int j){
     Node *head = NULL;
 
     if(ptr->head == NULL){
-        printf("Null condition");
         ptr->head = temp;
         
     }
@@ -71,42 +70,79 @@ void inputMatrix(Head *ptr,int c,int i, int j){
 }
 
 
-void findPath(Head *ptr,int endI,int endJ , FILE *output){
-            Stack *stack;
-            stack = (Stack*)malloc(sizeof(Stack));
-            stack->head = NULL;
-            Node *move;
-            move = ptr->head;
-            pushElement(stack,move);
-            while((move->i != endI && move->j != endJ) ){
-                if(move->right->data == 0 ){
-                    move = move->right;
-                    pushElement(stack,move);
-                    
-                }
-                else if(move->down->data ==0){
-                    
-                    move = move->down;
-                    pushElement(stack,move);
-                    
+void findPath(Head * ptr, int endI, int endJ, FILE * output) {
+    Stack * stack;
+    int condition = 0;
+    stack = (Stack * ) malloc(sizeof(Stack));
+    stack -> head = NULL;
+    Node * move;
+    move = ptr -> head;
+    pushElement(stack, move);
+    while (condition == 0) {
+        if (move -> i < endI && move -> j < endJ) {
+            if (move -> right -> data == 0) {
+                move = move -> right;
+                pushElement(stack, move);
 
-                }
-                else if(move->down->data !=0 && move->right->data !=0){
-                    move->data = 1;
-                    move = popElement(stack);
-                }
+            } 
+            else if (move -> down -> data == 0) {
+
+                move = move -> down;
+                pushElement(stack, move);
+
+            } 
+            else if (move -> down -> data != 0 && move -> right -> data != 0) {
+                move -> data = 1;
+                move = popElement(stack);
             }
-            pushElement(stack,move);
 
-            StackEle *p;
-            p = stack->head;
-            printf("\nThe result");
-            while(p->next != NULL){
-                printf("\n%d %d",p->ele->i,p->ele->j);
-                fprintf(output,"\n%d %d",p->ele->i,p->ele->j);
-                p = p->next;
+        } 
+        else if (move -> i == endI && move -> j != endJ) {
+            if (move -> right -> data == 0) {
+                move = move -> right;
+                pushElement(stack, move);
 
+            } 
+            else if (move -> down -> data != 0 && move -> right -> data != 0) {
+                move -> data = 1;
+                move = popElement(stack);
             }
+
+        } 
+        else if (move -> i != endI && move -> j == endJ) {
+            if (move -> down -> data == 0) {
+
+                move = move -> down;
+                pushElement(stack, move);
+
+            } 
+            else if (move -> down -> data != 0 && move -> right -> data != 0) {
+                move -> data = 1;
+                move = popElement(stack);
+            }
+
+        } 
+        else {
+            condition = 1;
+        }
+  }
+
+  pushElement(stack, move);
+
+  StackEle * p;
+  p = stack -> head;
+  printf("\nThe result");
+  if (p == NULL) {
+        printf("\nNo possible Path Exist");
+        fprintf(output, "%d", -1);
+
+  }
+  while (p -> next != NULL) {
+    printf("\n%d %d", p -> ele -> i, p -> ele -> j);
+    fprintf(output, "\n%d %d", p -> ele -> i, p -> ele -> j);
+    p = p -> next;
+
+  }
 
 }
 
