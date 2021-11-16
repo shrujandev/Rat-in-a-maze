@@ -177,13 +177,14 @@ void findPath(Head *ptr,int endI,int endJ){
                     
                     move = move->right;
                     pushElement(stack,move);
+                    printf("\ntest : %d  %d",move->i,move->j);
                     
-                }
+            }
                 else if(move->down->data ==0){
                     
                     move = move->down;
                     pushElement(stack,move);
-                    
+                    printf("\ntest : %d  %d",move->i,move->j);
 
                 }
                 else if(move->down->data !=0 && move->right->data !=0){
