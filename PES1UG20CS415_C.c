@@ -10,9 +10,8 @@ int main(){
     int b[500];
     
     Head *ptr=(Head*)malloc(sizeof(Head));
-    printf("Alloted ptr");
     init(ptr);
-    printf("after bAlloted ptr");
+    
 
     int startI,startJ,endI,endJ;
     FILE *input = fopen("input.txt","r");
@@ -41,15 +40,9 @@ int main(){
 
     };
    a = 0;
-   //printf("Before for loop");
     for(int i = startI; i <= endI ;i++){
-        //printf("inside f1");
         for(int j =startJ ; j <= endJ ; j++ ){
-          
             inputMatrix(ptr,b[a],i,j);
-            
-            
-
             a++;
         }
     }
