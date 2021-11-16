@@ -29,7 +29,7 @@ void init(Head *ptr){
 
 Node* popElement(Stack *stack);
 void inputMatrix(Head *ptr,int c,int i, int j);
-void findPath(Head *ptr,int endI,int endJ);
+void findPath(Head *ptr,int endI,int endJ,FILE *output);
 void pushElement(Stack *stack,Node *element);
 
 int main(){
