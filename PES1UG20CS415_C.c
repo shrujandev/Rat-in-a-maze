@@ -143,7 +143,9 @@ void inputMatrix(Head *ptr,int c,int i, int j){
                 
             }
             prevptr->right = temp;
+            prevptr = head;
             while(prevptr->right != NULL){
+                prevptr = prevptr->right;
                 aboveptr = aboveptr->right;
                 
             }
