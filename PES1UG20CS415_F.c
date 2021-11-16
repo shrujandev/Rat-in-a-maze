@@ -8,7 +8,6 @@ void init(Head *ptr){
 }
 
 void inputMatrix(Head *ptr,int c,int i, int j){
-    //printf("before allocation");
     printf("\n%d,%d ",i,j);
     Node *temp;
     temp = (Node*)malloc(sizeof(Node));
@@ -17,28 +16,22 @@ void inputMatrix(Head *ptr,int c,int i, int j){
             temp->data = c;
             temp->right =NULL;
             temp->down =NULL;
-    //printf("Allocated Successfully");
     Node *aboveptr = NULL;
     Node *prevptr = NULL;
     Node *head = NULL;
 
-    //printf("Before if conditions");
     if(ptr->head == NULL){
         printf("Null condition");
         ptr->head = temp;
         
     }
     else{
-        //printf("Inside elsse");
         head = ptr->head;
         while(head->down != NULL){
             aboveptr = head;
             head = head->down;
         }
         
-        
-        
-
         if(i==0){
             prevptr = head;
             while(prevptr->right != NULL){
@@ -74,7 +67,7 @@ void inputMatrix(Head *ptr,int c,int i, int j){
 
         
     }
-    printf("done");
+    
 }
 
 
@@ -87,17 +80,15 @@ void findPath(Head *ptr,int endI,int endJ , FILE *output){
             pushElement(stack,move);
             while((move->i != endI && move->j != endJ) ){
                 if(move->right->data == 0 ){
-                    
                     move = move->right;
                     pushElement(stack,move);
-                    printf("\ntest : %d  %d",move->i,move->j);
                     
-            }
+                }
                 else if(move->down->data ==0){
                     
                     move = move->down;
                     pushElement(stack,move);
-                    printf("\ntest : %d  %d",move->i,move->j);
+                    
 
                 }
                 else if(move->down->data !=0 && move->right->data !=0){
